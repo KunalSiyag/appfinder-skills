@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "tech.appfinder/appfinder",
+  "title": "AppFinder",
+  "description": "Find, compare and get cited software picks. Organic only. Makers can prepare a free listing.",
+  "websiteUrl": "https://appfinder.tech/mcp",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://appfinder.tech/api/mcp"
+    }
+  ]
+}
