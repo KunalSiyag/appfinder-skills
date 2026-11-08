@@ -1,0 +1,12 @@
+{
+  "name": "appfinder",
+  "version": "1.1.0",
+  "description": "Find and compare software with sources, or prepare an AppFinder listing for its maker to review.",
+  "author": { "name": "AppFinder" },
+  "homepage": "https://appfinder.tech/mcp",
+  "repository": "https://github.com/KunalSiyag/appfinder-skills",
+  "license": "MIT",
+  "keywords": ["software-discovery", "comparison", "mcp", "indie-software"],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json"
+}

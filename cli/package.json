@@ -1,0 +1,20 @@
+{
+  "name": "@dazzbuilds/appfinder-cli",
+  "version": "0.1.0",
+  "description": "Search and compare software through AppFinder's public API. No API key required.",
+  "type": "module",
+  "bin": { "appfinder": "bin/appfinder.mjs" },
+  "files": ["bin/", "lib/", "README.md", "LICENSE"],
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test test/*.test.mjs" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KunalSiyag/appfinder-skills.git",
+    "directory": "cli"
+  },
+  "homepage": "https://appfinder.tech/developers",
+  "bugs": { "url": "https://github.com/KunalSiyag/appfinder-skills/issues" },
+  "license": "MIT",
+  "keywords": ["appfinder", "cli", "software", "discovery", "alternatives"],
+  "publishConfig": { "access": "public" }
+}

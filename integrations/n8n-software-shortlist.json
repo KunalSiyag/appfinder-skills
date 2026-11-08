@@ -1,0 +1,113 @@
+{
+  "name": "Find software with AppFinder",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "start",
+      "name": "Run manually",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "query",
+              "name": "query",
+              "value": "invoicing for freelancers",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "query",
+      "name": "Choose a software need",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://appfinder.tech/api/v1/search",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "q",
+              "value": "={{ $json.query }}"
+            },
+            {
+              "name": "limit",
+              "value": "5"
+            }
+          ]
+        },
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "id": "search",
+      "name": "Search AppFinder",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Software shortlist\nEdit the query, then run manually. No credentials or paid AI model needed. Results retain AppFinder source URLs and metadata. Confirm prices on vendor sites.\n\nDoes not submit listings or send messages. Requests go to appfinder.tech. API terms: https://appfinder.tech/terms#api",
+        "height": 260,
+        "width": 620
+      },
+      "id": "notes",
+      "name": "How to use",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -300
+      ]
+    }
+  ],
+  "connections": {
+    "Run manually": {
+      "main": [
+        [
+          {
+            "node": "Choose a software need",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Choose a software need": {
+      "main": [
+        [
+          {
+            "node": "Search AppFinder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "active": false,
+  "pinData": {},
+  "tags": []
+}

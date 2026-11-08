@@ -30,6 +30,10 @@ Twelve prompts for choosing software and for building and listing it: [`prompts/
 ## Data and APIs
 The catalog as CSV/JSON (CC BY 4.0), a JSON API, Markdown pages and `llms.txt`: [`data/`](data/).
 
+## Integration kit
+
+An importable [Postman collection, OpenAPI document and n8n workflow](integrations/), plus a [Node.js CLI](cli/), are included. Cursor and Claude-compatible plugin manifests package both skills with the remote MCP connection. These are public integration artifacts; marketplace approval is separate.
+
 ## How ranking works
 Positions come from community upvotes, visitor ratings and listing quality. Payment, Pro plans and sponsorship never change
 them: [appfinder.tech/trust/ranking](https://appfinder.tech/trust/ranking).

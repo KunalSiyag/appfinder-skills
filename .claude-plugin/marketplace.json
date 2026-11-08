@@ -1,0 +1,12 @@
+{
+  "name": "appfinder-tools",
+  "owner": { "name": "AppFinder" },
+  "plugins": [
+    {
+      "name": "appfinder",
+      "source": "./",
+      "description": "Software discovery and maker listing drafts using AppFinder's public MCP server.",
+      "version": "1.1.0"
+    }
+  ]
+}

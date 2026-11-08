@@ -1,0 +1,148 @@
+{
+  "info": {
+    "name": "AppFinder public API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Search, compare and inspect software listings. No key. Keep source attribution. API terms: https://appfinder.tech/terms#api"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://appfinder.tech"
+    }
+  ],
+  "item": [
+    {
+      "name": "Search listed apps by what they do. Most relevant first.",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/search?q=kanban&limit=5",
+        "description": "Use slugs from current search results. Examples may change as listings change."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Source attribution retained', () => { const body = pm.response.json(); pm.expect(body).to.have.property('data'); pm.expect(body.meta.source).to.eql('AppFinder'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "One app: description, categories, pricing, platforms, features, integrations, rating and sourced facts.",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/apps/zendesk",
+        "description": "Use slugs from current search results. Examples may change as listings change."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Source attribution retained', () => { const body = pm.response.json(); pm.expect(body).to.have.property('data'); pm.expect(body.meta.source).to.eql('AppFinder'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alternatives to an app: same category, most shared features first, with the reasons.",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/apps/zendesk/alternatives",
+        "description": "Use slugs from current search results. Examples may change as listings change."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Source attribution retained', () => { const body = pm.response.json(); pm.expect(body).to.have.property('data'); pm.expect(body.meta.source).to.eql('AppFinder'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Two apps side by side: pricing, and which features, integrations and platforms they share or don't.",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/compare?a=xero&b=ynab",
+        "description": "Use slugs from current search results. Examples may change as listings change."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Source attribution retained', () => { const body = pm.response.json(); pm.expect(body).to.have.property('data'); pm.expect(body.meta.source).to.eql('AppFinder'); });"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Every category with its app count.",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/v1/categories",
+        "description": "Use slugs from current search results. Examples may change as listings change."
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('HTTP 200', () => pm.response.to.have.status(200));",
+              "pm.test('Source attribution retained', () => { const body = pm.response.json(); pm.expect(body).to.have.property('data'); pm.expect(body.meta.source).to.eql('AppFinder'); });"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

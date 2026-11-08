@@ -1,0 +1,222 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AppFinder API",
+    "version": "1",
+    "description": "Read-only access to the AppFinder software directory. Organic data only: positions can't be bought and paid placements are never included. Free to use under the API terms (https://appfinder.tech/terms#api): attribution to AppFinder with a link is required, and bulk copying is not allowed."
+  },
+  "servers": [
+    {
+      "url": "https://appfinder.tech"
+    }
+  ],
+  "paths": {
+    "/api/v1/search": {
+      "get": {
+        "summary": "Search listed apps by what they do. Most relevant first.",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "description": "What you're looking for, e.g. kanban or invoicing for freelancers (max 120 characters).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "description": "A category slug or name to narrow the search.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "description": "Results to return, 1 to 25 (default 10).",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON: { data, meta }",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad input: { error: { code, message } }"
+          },
+          "404": {
+            "description": "No such app or category."
+          },
+          "429": {
+            "description": "Over 120 requests per 10 minutes from one address; see Retry-After."
+          }
+        },
+        "operationId": "searchApps"
+      }
+    },
+    "/api/v1/apps/{slug}": {
+      "get": {
+        "summary": "One app: description, categories, pricing, platforms, features, integrations, rating and sourced facts.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "The app's slug, the last part of its /apps/<slug> address.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON: { data, meta }",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad input: { error: { code, message } }"
+          },
+          "404": {
+            "description": "No such app or category."
+          },
+          "429": {
+            "description": "Over 120 requests per 10 minutes from one address; see Retry-After."
+          }
+        },
+        "operationId": "getApp"
+      }
+    },
+    "/api/v1/apps/{slug}/alternatives": {
+      "get": {
+        "summary": "Alternatives to an app: same category, most shared features first, with the reasons.",
+        "parameters": [
+          {
+            "name": "slug",
+            "in": "path",
+            "required": true,
+            "description": "The app's slug.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON: { data, meta }",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad input: { error: { code, message } }"
+          },
+          "404": {
+            "description": "No such app or category."
+          },
+          "429": {
+            "description": "Over 120 requests per 10 minutes from one address; see Retry-After."
+          }
+        },
+        "operationId": "findAlternatives"
+      }
+    },
+    "/api/v1/compare": {
+      "get": {
+        "summary": "Two apps side by side: pricing, and which features, integrations and platforms they share or don't.",
+        "parameters": [
+          {
+            "name": "a",
+            "in": "query",
+            "required": true,
+            "description": "First app's slug.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "b",
+            "in": "query",
+            "required": true,
+            "description": "Second app's slug.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "JSON: { data, meta }",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad input: { error: { code, message } }"
+          },
+          "404": {
+            "description": "No such app or category."
+          },
+          "429": {
+            "description": "Over 120 requests per 10 minutes from one address; see Retry-After."
+          }
+        },
+        "operationId": "compareApps"
+      }
+    },
+    "/api/v1/categories": {
+      "get": {
+        "summary": "Every category with its app count.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "JSON: { data, meta }",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad input: { error: { code, message } }"
+          },
+          "404": {
+            "description": "No such app or category."
+          },
+          "429": {
+            "description": "Over 120 requests per 10 minutes from one address; see Retry-After."
+          }
+        },
+        "operationId": "listCategories"
+      }
+    }
+  }
+}

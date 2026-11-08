@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "appfinder": {
+      "url": "https://appfinder.tech/api/mcp"
+    }
+  }
+}
