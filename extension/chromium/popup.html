@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AppFinder — find your next tool</title>
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.mjs"></script>
+</head>
+<body>
+  <header><a href="https://appfinder.tech" target="_blank" rel="noopener noreferrer"><img src="icon.png" width="32" height="32" alt="">AppFinder</a><a class="small" href="https://appfinder.tech/submit" target="_blank" rel="noopener noreferrer">List your app ↗</a></header>
+  <main>
+    <h1>A tool for your next idea.</h1>
+    <form id="search-form">
+      <label for="query">What do you want to do?</label>
+      <div class="search"><input id="query" name="query" type="search" required maxlength="120" autocomplete="off" placeholder="Invoicing for freelancers…"><button type="submit">Find tools</button></div>
+      <p class="hint">Your search goes to AppFinder only when you submit.</p>
+    </form>
+    <p id="status" role="status" aria-live="polite">Search by a task, a feature, or an app name.</p>
+    <ol id="results" aria-label="Matching software"></ol>
+  </main>
+  <footer><a href="https://appfinder.tech/categories" target="_blank" rel="noopener noreferrer">Browse categories ↗</a><a href="https://appfinder.tech/privacy" target="_blank" rel="noopener noreferrer">Privacy</a></footer>
+</body>
+</html>
