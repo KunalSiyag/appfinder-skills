@@ -34,6 +34,12 @@ The catalog as CSV/JSON (CC BY 4.0), a JSON API, Markdown pages and `llms.txt`: 
 
 An importable [Postman collection, OpenAPI document and n8n workflow](integrations/), plus a [Node.js CLI](cli/), are included. Cursor and Claude-compatible plugin manifests package both skills with the remote MCP connection. These are public integration artifacts; marketplace approval is separate.
 
+The [CLI is published on npm](https://www.npmjs.com/package/@dazzbuilds/appfinder-cli):
+
+```bash
+npx @dazzbuilds/appfinder-cli search "invoicing for freelancers" --limit 5
+```
+
 ## Browser extension
 
 The [toolbar search extension](extension/) includes development packages for Chrome/Edge and Firefox. It searches only when you submit a query and needs no browsing-history access. Installation instructions, permission explanations and store copy are included. Store approval and native-browser installation checks are still pending.
